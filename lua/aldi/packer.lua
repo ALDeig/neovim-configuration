@@ -36,6 +36,10 @@ return require('packer').startup(function(use)
   -- formatters
   use ( 'mbbill/undotree' )
 
+  -- terminal
+  use 'voldikss/vim-floaterm'
+
+
   -- files
   use {
       'nvim-tree/nvim-tree.lua',
