@@ -58,7 +58,7 @@ vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 -- )
 vim.api.nvim_create_autocmd(
     "FileType",
-    { pattern = {"python"}, command = [[map <buffer><C-h> :FloatermNew --wintype=split --height=0.4 python % <CR>]]}
+    { pattern = {"python"}, command = [[map <buffer><C-h> :FloatermNew --wintype=split --height=0.4 --autoclose=0 python % <CR>]]}
 )
 -- vim.api.nvim_create_autocmd(
 --     "FileType",
