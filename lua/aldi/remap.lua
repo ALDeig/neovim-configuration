@@ -48,3 +48,24 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/aldi/packer.lua<CR>");
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
+
+
+-- autocmd FileType python map <buffer> <C-h> :w<CR>:exec '!python' shellescape(@%, 1)<CR>
+-- autocmd FileType python imap <buffer> <C-h> <esc>:w<CR>:exec '!python' shellescape(@%, 1)<CR>
+-- vim.api.nvim_create_autocmd(
+--     "FileType",
+--     { pattern = { "python" }, command = [[map <buffer><C-h> :exec '!python' shellescape(@%, 1) <CR> ]]}
+-- )
+vim.api.nvim_create_autocmd(
+    "FileType",
+    { pattern = {"python"}, command = [[map <buffer><C-h> :FloatermNew --wintype=split --height=0.4 python % <CR>]]}
+)
+-- vim.api.nvim_create_autocmd(
+--     "FileType",
+--     { pattern = { "python" }, command = [[imap <buffer> <C-h> <esc>:w<CR>:exec '!python' shellescape(@%, 1)<CR> ]]}
+-- )
+-- vim.api.nvim_create_autocmd(
+--     "TermOpen",
+--     { pattern = {"*"}, command = [[tmap <buffer> <Esc> <C-\><C-n>]] }
+-- )
+
