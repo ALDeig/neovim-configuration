@@ -5,7 +5,6 @@ lsp.preset('recommended')
 
 lsp.ensure_installed({
     'pyright',
-    'sumneko_lua',
 })
 -- lsp.configure('pyright', {force_setup = true})
 
