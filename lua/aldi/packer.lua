@@ -1,7 +1,8 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
 -- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
+-- vim.cmd [[packadd packer.nvim]]
+vim.cmd.packadd('packer.nvim')
 
 return require('packer').startup(function(use)
   -- Packer can manage itself
@@ -38,6 +39,19 @@ return require('packer').startup(function(use)
 
   -- terminal
   use 'voldikss/vim-floaterm'
+  use {
+      'numToStr/Comment.nvim',
+      config = function()
+          require('Comment').setup()
+      end
+  }
+  -- auto-save
+  use({
+      "Pocco81/auto-save.nvim",
+      config = function()
+          require("auto-save").setup {}
+      end,
+  })
 
 
   -- files
