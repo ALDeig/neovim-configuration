@@ -51,22 +51,17 @@ vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 vim.keymap.set("n", ",<space>", "<cmd>:nohlsearch<CR>")
 
 
--- autocmd FileType python map <buffer> <C-h> :w<CR>:exec '!python' shellescape(@%, 1)<CR>
--- autocmd FileType python imap <buffer> <C-h> <esc>:w<CR>:exec '!python' shellescape(@%, 1)<CR>
--- vim.api.nvim_create_autocmd(
---     "FileType",
---     { pattern = { "python" }, command = [[map <buffer><C-h> :exec '!python' shellescape(@%, 1) <CR> ]]}
--- )
+-- запускает python файл
 vim.api.nvim_create_autocmd(
     "FileType",
     { pattern = {"python"}, command = [[map <buffer><C-h> :FloatermNew --wintype=split --height=0.4 --autoclose=0 python % <CR>]]}
 )
--- vim.api.nvim_create_autocmd(
---     "FileType",
---     { pattern = { "python" }, command = [[imap <buffer> <C-h> <esc>:w<CR>:exec '!python' shellescape(@%, 1)<CR> ]]}
--- )
--- vim.api.nvim_create_autocmd(
---     "TermOpen",
---     { pattern = {"*"}, command = [[tmap <buffer> <Esc> <C-\><C-n>]] }
--- )
 
+-- вызывает препроцесор sass для всех файлов в текущем каталоге и создает фалйлы в каталоге выше/css/
+vim.api.nvim_create_autocmd(
+    {"BufEnter", "BufWinEnter"},
+    { 
+        pattern = {"*.scss"},
+        command = [[map <buffer><leader>css :FloatermNew --wintype=split --height=0.4 --autoclose=1 sass %:p:h:%:p:h/../css/ <CR>]]
+    }
+)
